@@ -12,26 +12,29 @@ export default class StopWatch extends React.Component{
 
     this.state = {
       clock : 0
+
     }
 
     
 
   };
-
-  render(){
-    let time = this.state.clock
+  timeUpdater (){
+    let time = this.state.clock;
     setInterval(() => 
-    
-    { time++
-      this.setState( {
+  
+    {
+    time++;
+   this.setState( {
       clock: time
     })
-    }, 1000)
+   }, 1000)
+  }
+  render(){
 
     return (
       <div>
         <Time clock={this.state.clock}/>
-        <StartButton />
+        <StartButton startTimer={() => this.timeUpdater()}/>
         <PauseButton />
         <ResetButton />
       </div>
