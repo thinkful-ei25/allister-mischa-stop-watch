@@ -27,9 +27,13 @@ export default class StopWatch extends React.Component{
    this.setState( {
       clock: time
     })
-   }, 1000)
+   }, 0)
   }
   render(){
+    
+    
+      
+    
 
     return (
       <div>
