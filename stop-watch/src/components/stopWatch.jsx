@@ -1,14 +1,12 @@
 import React from 'react';
-import StartButton from './start-button';
-import PauseButton from './pause-button';
+import Button from './button';
+// import PauseButton from './pause-button';
 import ResetButton from './reset-button';
 import Time from './time';
 
 export default class StopWatch extends React.Component {
   constructor(props) {
     super(props)
-
-
 
     this.state = {
       clock: 0,
@@ -17,28 +15,27 @@ export default class StopWatch extends React.Component {
     this.myInterval = null
   };
 
-
-
   setTime() {
     let time = this.state.clock;
     time++;
+
     this.setState({
       clock: time
     })
   }
 
-
-  
-  
-
-  
+  resetTime(){
+    this.setState({
+      clock: 0
+    })
+  }
   timeUpdater() {
     
 
     if (!this.state.pause) {
        this.myInterval = setInterval(() => {
         this.setTime()
-      }, 1000)
+      }, 10)
     } else {
       console.log(this.myInterval)
       clearInterval(this.myInterval)
@@ -52,14 +49,12 @@ export default class StopWatch extends React.Component {
   }
   render() {
 
-
-
     return (
       <div>
         <Time clock={this.state.clock} />
-        <StartButton setPause={() => this.setPause(false)} startTimer={() => this.timeUpdater()} />
-        <PauseButton setPause={() => this.setPause(true)} startTimer={() => this.timeUpdater()} />
-        <ResetButton />
+        <Button buttonName={'Start'} setPause={() => this.setPause(false)} startTimer={() => this.timeUpdater()} />
+        <Button buttonName={'Pause'} setPause={() => this.setPause(true)} startTimer={() => this.timeUpdater()} />
+        <ResetButton setReset={() => this.resetTime()} />
       </div>
     )
   }

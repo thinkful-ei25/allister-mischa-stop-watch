@@ -1,7 +1,8 @@
 import React from 'react';
 
-export default function ResetButton() {
+export default function ResetButton(props) {
   return(
-      <span><button>Reset</button></span>
+      <span><button onClick={props.setReset}
+      >Reset</button></span>
   )
 }

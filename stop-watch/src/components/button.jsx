@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function StartButton(props) {
+export default function Button(props) {
   return(
     
       <span>
@@ -11,7 +11,7 @@ export default function StartButton(props) {
           })
           .then(() => props.startTimer());
         }}>
-          Start
+          {props.buttonName}
         </button>
       </span>
   )
