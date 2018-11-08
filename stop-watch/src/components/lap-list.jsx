@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './lap-list.css';
 export default function LapList(props) {
     const laps = props.lapsList.map((time, idx) => {
       const seconds = 100;
@@ -19,7 +19,7 @@ export default function LapList(props) {
       });
       console.log(laps);
     return (
-      <ul className="character-list">
+      <ul >
           {laps}
       </ul>
   );    
