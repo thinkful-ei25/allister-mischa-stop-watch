@@ -8,9 +8,11 @@ export default function Time(props) {
   const secondsDisplay = (Math.floor(props.clock/(seconds))%60);
   const minutesDisplay = (Math.floor(props.clock/minutes)%60);
   const hoursDisplay = (Math.floor(props.clock/hours)%100);
+  const timeToDisplay = `${hoursDisplay.toString().padStart(2, "0")} : ${minutesDisplay.toString().padStart(2, "0")} : ${secondsDisplay.toString().padStart(2, "0")} : ${hundrethsDisplay.toString().padStart(2, "0")}`;
+  // props.timeDisplay = timeToDisplay;
   return(
     <div>
-      <span>{hoursDisplay.toString().padStart(2, "0")} : {minutesDisplay.toString().padStart(2, "0")} : {secondsDisplay.toString().padStart(2, "0")} : {hundrethsDisplay.toString().padStart(2, "0")}</span>
+      <span>{timeToDisplay}</span>
     </div>
   )
 }

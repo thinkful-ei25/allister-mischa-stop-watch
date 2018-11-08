@@ -3,6 +3,8 @@ import Button from './button';
 // import PauseButton from './pause-button';
 import ResetButton from './reset-button';
 import Time from './time';
+import LapButton from './lap-button';
+import LapList from './lap-list'
 
 export default class StopWatch extends React.Component {
   constructor(props) {
@@ -10,7 +12,9 @@ export default class StopWatch extends React.Component {
 
     this.state = {
       clock: 0,
-      pause: true
+      pause: true,
+      // timeDisplay: '00 : 00 : 00',
+      laps: []
     }
     this.myInterval = null
   };
@@ -26,7 +30,8 @@ export default class StopWatch extends React.Component {
 
   resetTime(){
     this.setState({
-      clock: 0
+      clock: 0,
+      laps: []
     })
   }
   timeUpdater() {
@@ -54,7 +59,9 @@ export default class StopWatch extends React.Component {
         <Time clock={this.state.clock} />
         <Button buttonName={'Start'} setPause={() => this.setPause(false)} startTimer={() => this.timeUpdater()} />
         <Button buttonName={'Pause'} setPause={() => this.setPause(true)} startTimer={() => this.timeUpdater()} />
-        <ResetButton setReset={() => this.resetTime()} />
+        <ResetButton setReset={() => this.resetTime()}/>
+        <LapButton lapTime={this.state.clock} lap={this.state.laps} pauseState={this.state.pause}/>
+        <LapList lapsList={this.state.laps}/>
       </div>
     )
   }
